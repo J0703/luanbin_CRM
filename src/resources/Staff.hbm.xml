@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.lanou.domain.Staff" table="crm_staff">
+        <id name="staffId" length="32">
+            <generator class="uuid"/>
+        </id>
+        <property name="loginName" length="100"/>
+        <property name="loginPwd" length="100"/>
+        <property name="staffName" length="100"/>
+
+        <property name="gender" length="20"/>
+        <property name="onDutyDate"/>
+        <!-- n对1关联关系 多个员工对应一个部门
+        insert: 当插入当前对象时是否级联插入其他对象, false不插入 , 默认true
+        lazy: 懒加载设置, 默认是true, 代表查询该对象是否级联查询其他对象
+        true是不加载, false是加载-->
+        <!--<many-to-one name="department"-->
+                     <!--lazy="false"-->
+                     <!--class="com.lanou.domain.Department"-->
+                     <!--column="department_id"-->
+                     <!--cascade="all"/>-->
+
+        <!-- n对1关联关系 多个员工对应一个职务 -->
+        <many-to-one name="Post"
+                     lazy="false"
+                     class="com.lanou.domain.Post"
+                     column="post_id"
+                     cascade="all"/>
+
+    </class>
+</hibernate-mapping>

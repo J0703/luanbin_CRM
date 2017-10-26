@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <!-- 将struts中的对象创建交给spring完成 -->
+    <constant name="struts.objectFactory" value="spring"/>
+    <package name="ssh" extends="json-default">
+        <action name="login"
+                class="staffAction"
+                method="login">
+            <result name="success">/pages/frame.jsp</result>
+            <result name="error">/pages/error.jsp</result>
+            <result name="input">/pages/login.jsp</result>
+        </action>
+        <action name="addDepartment"
+                class="departmentAction"
+                method="addDepartment">
+            <result name="success" type="chain">findAllDepartment</result>
+            <result name="error">/pages/department/listDepartment.jsp</result>
+        </action>
+        <action name="findAllDepartment"
+                class="departmentAction"
+                method="findAllDepartment">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
+        <action name="findAllDepartment1"
+                class="departmentAction"
+                method="findAllDepartment">
+            <result name="success">/pages/post/addOrEditPost.jsp</result>
+        </action>
+    </package>
+    <package name="post" extends="json-default">
+        <action name="findAllPost"
+                class="postAction"
+                method="findAllPost">
+            <result name="success">/pages/post/listPost.jsp</result>
+        </action>
+        <action name="addPost"
+                class="postAction"
+                method="addPost">
+            <result name="success" type="chain">findAllPost</result>
+            <result name="error">/pages/post/listPost.jsp</result>
+        </action>
+    </package>
+</struts>
