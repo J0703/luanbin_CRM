@@ -78,7 +78,7 @@
       <data-type>varchar(20)|0</data-type>
     </column>
     <column id="37" parent="22" name="onDutyDate">
-      <data-type>datetime|0</data-type>
+      <data-type>date|0</data-type>
     </column>
     <column id="38" parent="22" name="post_id">
       <data-type>varchar(32)|0</data-type>

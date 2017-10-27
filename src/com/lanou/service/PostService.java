@@ -11,4 +11,10 @@ public interface PostService {
     List<Post> findAllPost();
 
     void addPost(Post post);
+
+    void update(Post post);
+
+    List<Post> findPostByDepId(String depId);
+
+    Post findPostByPostId(String postId);
 }

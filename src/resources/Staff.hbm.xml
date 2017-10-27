@@ -19,11 +19,10 @@
         <!--<many-to-one name="department"-->
                      <!--lazy="false"-->
                      <!--class="com.lanou.domain.Department"-->
-                     <!--column="department_id"-->
                      <!--cascade="all"/>-->
 
         <!-- n对1关联关系 多个员工对应一个职务 -->
-        <many-to-one name="Post"
+        <many-to-one name="post"
                      lazy="false"
                      class="com.lanou.domain.Post"
                      column="post_id"

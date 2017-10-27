@@ -1,6 +1,6 @@
 package com.lanou.domain;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 /**
  * Created by dllo on 2017/10/20.
@@ -11,9 +11,9 @@ public class Staff {
     private String loginPwd;
     private String staffName;
     private String gender;
-    private Timestamp onDutyDate;
+    private Date onDutyDate;
     private Department department;//所属部门
-    private Post Post;//所属职务
+    private Post post;//所属职务
 
     public Staff() {
     }
@@ -27,23 +27,13 @@ public class Staff {
         this.staffName = staffName;
     }
 
-    public Staff(String staffId, String staffName, Department department, Post Post) {
+    public Staff(String staffId, String staffName, Department department, Post post) {
         this.staffId = staffId;
         this.staffName = staffName;
         this.department = department;
-        this.Post = Post;
+        this.post = post;
     }
 
-    public Staff(String staffId, String loginName, String loginPwd, String staffName, String gender, Timestamp onDutyDate, Department department, Post Post) {
-        this.staffId = staffId;
-        this.loginName = loginName;
-        this.loginPwd = loginPwd;
-        this.staffName = staffName;
-        this.gender = gender;
-        this.onDutyDate = onDutyDate;
-        this.department = department;
-        this.Post = Post;
-    }
 
     @Override
     public String toString() {
@@ -53,9 +43,9 @@ public class Staff {
                 ", loginPwd='" + loginPwd + '\'' +
                 ", staffName='" + staffName + '\'' +
                 ", gender='" + gender + '\'' +
-                ", onDutyDate='" + onDutyDate + '\'' +
+                ", onDutyDate=" + onDutyDate +
                 ", department=" + department +
-                ", Post=" + Post +
+                ", post=" + post +
                 '}';
     }
 
@@ -84,11 +74,11 @@ public class Staff {
     }
 
     public Post getPost() {
-        return Post;
+        return post;
     }
 
-    public void setPost(Post Post) {
-        this.Post = Post;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public String getLoginName() {
@@ -115,11 +105,11 @@ public class Staff {
         this.gender = gender;
     }
 
-    public Timestamp getOnDutyDate() {
+    public Date getOnDutyDate() {
         return onDutyDate;
     }
 
-    public void setOnDutyDate(Timestamp onDutyDate) {
+    public void setOnDutyDate(Date onDutyDate) {
         this.onDutyDate = onDutyDate;
     }
 }

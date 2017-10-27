@@ -13,7 +13,8 @@
         <!-- 定义1对n单项关联关系 -->
         <set name="postList"
              cascade="all"
-             inverse="false">
+             inverse="false"
+             lazy="false">
             <key column="department_id"/>
             <one-to-many class="com.lanou.domain.Post"/>
         </set>

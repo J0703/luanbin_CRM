@@ -12,7 +12,7 @@
                      not-null="true"
                      column="department_id"
                      cascade="all"
-        lazy="false"/>
+                     lazy="false"/>
 
     </class>
 </hibernate-mapping>

@@ -23,8 +23,12 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
     private Post post = new Post();
 
     private String department_id;
+
+    private String postID;
     @Resource
     private PostService postService;
+
+
     @Resource(name = "departmentService")
     private DepartmentService departmentService;
 
@@ -32,14 +36,22 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
     public String findAllPost() {
         List<Post> posts = postService.findAllPost();
         ActionContext.getContext().getSession().put("posts", posts);
-        System.out.println(posts);
         return SUCCESS;
     }
 
     public String addPost() {
-        Department department = departmentService.findById(department_id);
-        post.setDepartment(department);
-        postService.addPost(post);
+        if (postID.equals("")) {
+            System.out.println(1);
+            Department department = departmentService.findById(department_id);
+            post.setDepartment(department);
+            postService.addPost(post);
+
+        } else {
+            Department department = departmentService.findById(department_id);
+            post.setDepartment(department);
+            post.setPostId(postID);
+            postService.update(post);
+        }
         return SUCCESS;
     }
 
@@ -54,5 +66,13 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
 
     public void setDepartment_id(String department_id) {
         this.department_id = department_id;
+    }
+
+    public String getPostID() {
+        return postID;
+    }
+
+    public void setPostID(String postID) {
+        this.postID = postID;
     }
 }

@@ -38,4 +38,5 @@ public class MainTest {
         postService.addPost(post);
         System.out.println(department);
     }
+
 }

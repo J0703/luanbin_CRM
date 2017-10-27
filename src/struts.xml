@@ -46,4 +46,50 @@
             <result name="error">/pages/post/listPost.jsp</result>
         </action>
     </package>
+
+
+    <package name="staff" extends="json-default">
+        <action name="findDepartment"
+                class="staffAction"
+                method="findDepartment">
+            <result name="success" type="json">
+                <param name="root">departments</param>
+            </result>
+        </action>
+        <action name="findPostByDepId"
+                class="staffAction"
+                method="findPostByDepId">
+            <result name="success" type="json">
+                <param name="root">posts</param>
+            </result>
+        </action>
+        <!--<action name="showStaff"-->
+                <!--class="staffAction"-->
+                <!--method="showStaff">-->
+            <!--<result name="success">/pages/staff/listStaff.jsp</result>-->
+        <!--</action>-->
+        <action name="listStaff"
+                class="staffAction"
+                method="listStaff">
+            <result name="success">/pages/staff/listStaff.jsp</result>
+        </action>
+
+        <action name="addStaff"
+                class="staffAction"
+                method="addStaff">
+            <result name="success" type="chain">listStaff</result>
+        </action>
+
+        <action name="findDepartmentAndPost"
+                class="staffAction"
+                method="findDepartmentAndPost">
+            <result name="success">/pages/staff/editStaff.jsp</result>
+        </action>
+
+        <action name="editStaff"
+                class="staffAction"
+                method="editStaff">
+            <result name="success" type="chain">listStaff</result>
+        </action>
+    </package>
 </struts>

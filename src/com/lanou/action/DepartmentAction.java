@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,13 +19,13 @@ import java.util.List;
 @Controller("departmentAction")
 @Scope("prototype")
 public class DepartmentAction extends ActionSupport implements ModelDriven<Department> {
+
     private Department department = new Department();
 
     @Resource
     private DepartmentService departmentService;
 
     public String addDepartment() {
-        System.out.println(department);
         if (department.getDepName().trim().equals("")) {
             return ERROR;
         }
@@ -44,12 +45,10 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
         return SUCCESS;
     }
 
-    public Department findById(String department_id) {
-        return departmentService.findById(department_id);
-    }
 
     @Override
     public Department getModel() {
         return department;
     }
+
 }

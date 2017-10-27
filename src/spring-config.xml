@@ -26,20 +26,13 @@
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
-                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                 <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
             </props>
         </property>
-        <property name="mappingLocations">
-            <list>
-                <value>classpath:resources/Department.hbm.xml</value>
-                <value>classpath:resources/Post.hbm.xml</value>
-                <value>classpath:resources/Staff.hbm.xml</value>
-            </list>
-        </property>
-        <!--<property name="mappingLocations" value="classpath:resources/*.hbm.xml"/>-->
+        <property name="mappingLocations" value="classpath:resources/*.hbm.xml"/>
     </bean>
 
     <!-- 3. 配置事务对象 (切面)-->

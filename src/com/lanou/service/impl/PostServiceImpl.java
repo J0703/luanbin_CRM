@@ -29,4 +29,19 @@ public class PostServiceImpl implements PostService{
     public void addPost(Post post) {
         postDao.addPost(post);
     }
+
+    @Override
+    public void update(Post post) {
+        postDao.updatePost(post);
+    }
+
+    @Override
+    public List<Post> findPostByDepId(String depId) {
+        return postDao.findPostByDepId(depId);
+    }
+
+    @Override
+    public Post findPostByPostId(String postId) {
+        return postDao.findPostByPostId(postId);
+    }
 }

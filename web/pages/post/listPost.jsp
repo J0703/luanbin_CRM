@@ -51,7 +51,7 @@
 	    <td align="center">${post.department.depName}</td>
 	    <td align="center">${post.postName}</td>
 	  	<td width="7%" align="center">
-	  		<a href="${pageContext.request.contextPath}/pages/post/addOrEditPost.jsp?postId=${post.postId}&postName=${post.postName}&depName=${post.department.depName}"><img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img" /></a>
+	  		<a href="${pageContext.request.contextPath}findAllDepartment1.action?postId=${post.postId}&postName=${post.postName}&depName=${post.department.depName}&depId=${post.department.depId}"><img src="${pageContext.request.contextPath}/images/button/modify.gif" class="img" /></a>
 	  	</td>
 	  </tr>
     </s:iterator>

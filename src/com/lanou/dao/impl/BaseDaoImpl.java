@@ -30,7 +30,13 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
     @Override
     public List<T> findAll(String hql) {
-        return (List<T>) getHibernateTemplate().find(hql);
+        Session session = currentSession();
+
+        Query query = session.createQuery(hql);
+
+        List<T> tList = query.list();
+
+        return tList;
     }
 
     @Override
@@ -65,7 +71,8 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
     @Override
     public void update(T t) {
-        getHibernateTemplate().update(t);
+        Session session = currentSession();
+        session.merge(t);
     }
 
 }

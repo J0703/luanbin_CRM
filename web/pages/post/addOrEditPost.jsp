@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -44,13 +45,15 @@
             <td><select name="department_id">
                 <option value="" selected>----请--选--择----</option>
                 <s:iterator value="#session.departments" var="depart">
-                    <option value="${depart.depId}">${depart.depName}</option>
+                    <option value="${depart.depId}" <c:if test="${depart.depId eq param.depId}">
+                        selected
+                    </c:if>>${depart.depName}</option>
                 </s:iterator>
             </select>
-
+                <input type="hidden" name="postID" value="${param.postId}">
             </td>
             <td>职务：</td>
-            <td><input type="text" name="postName" value="总监"/></td>
+            <td><input type="text" name="postName" value="${param.postName}"/></td>
         </tr>
     </table>
 </form>
