@@ -9,12 +9,20 @@ import java.util.List;
  */
 public interface StaffDao {
     boolean login(String name, String password);
-
-    List<Staff> findStaff(String department, String post);
+    
 
     List<Staff> findAll();
 
     void add(Staff staff);
 
     Staff findByStaffId(String staffId);
+
+    void editStaff(Staff staff);
+
+    List<Staff> findStaffByPostId(String postId);
+
+    List<Staff> findStaffByPostIdAndStaffName(String postId, String staffName);
+
+
+    List<Staff> findStaffByStaffName(String staffName);
 }

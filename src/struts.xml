@@ -63,11 +63,11 @@
                 <param name="root">posts</param>
             </result>
         </action>
-        <!--<action name="showStaff"-->
-                <!--class="staffAction"-->
-                <!--method="showStaff">-->
-            <!--<result name="success">/pages/staff/listStaff.jsp</result>-->
-        <!--</action>-->
+        <action name="showStaff"
+                class="staffAction"
+                method="showStaff">
+            <result name="success">/pages/staff/listStaff.jsp</result>
+        </action>
         <action name="listStaff"
                 class="staffAction"
                 method="listStaff">

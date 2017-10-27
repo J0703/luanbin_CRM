@@ -39,7 +39,7 @@
 
 <form action="${pageContext.request.contextPath}/editStaff.action" method="Post">
 
-    <input type="hidden" name="staffId" value="2c9091c14c78e58b014c78e7ecd90007"/>
+    <input type="hidden" name="staffId" value="${param.staffId}"/>
 
     <table width="88%" border="0" class="emp_table" style="width:80%;">
         <tr>
@@ -57,13 +57,12 @@
                        value="男" <c:if test="${param.gender eq '男'}">checked="checked"</c:if> />男
                 <input type="radio" name="gender"
                        value="女" <c:if test="${param.gender eq '女'}">checked="checked"</c:if> />女
-                <input type="text" value="${param.gender}">
             </td>
         </tr>
         <tr>
             <td width="10%">所属部门：</td>
             <td width="20%">
-                <select name="department" id="s1">
+                <select name="department.depId" id="s1">
                     <s:iterator value="#session.departments" var="depart">
                         <option value="${depart.depId}" <c:if test="${depart.depId eq param.depId}">
                             selected
@@ -74,7 +73,7 @@
             </td>
             <td width="8%">职务：</td>
             <td width="62%">
-                <select name="post" id="s2">
+                <select name="post.postId" id="s2">
                     <s:iterator value="#session.posts" var="post">
                         <option value="${post.postId}" <c:if test="${post.postId eq param.postId}">
                             selected

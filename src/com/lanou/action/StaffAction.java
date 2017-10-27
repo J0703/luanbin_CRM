@@ -54,14 +54,48 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
         return SUCCESS;
     }
 
-//    public String showStaff() {
-//        System.out.println("部门" + department);
-//        System.out.println("职务" + post);
-//        List<Staff> staffs = staffService.findStaff(department, post);
-//        System.out.println(staffs);
-//        ServletActionContext.getRequest().setAttribute("staffs", staffs);
-//        return SUCCESS;
-//    }
+    public String showStaff() {
+
+        if (staff.getStaffName().equals("")) {
+            if (staff.getDepartment().getDepId().equals("-1")) {
+                List<Staff> staffs = staffService.findAll();
+                ActionContext.getContext().getSession().put("staffs", staffs);
+            } else if (staff.getPost().getPostId().equals("-1")) {
+                List<Post> posts = postService.findPostByDepId(staff.getDepartment().getDepId());
+
+                List<Staff> staffs = new ArrayList<>();
+                for (Post post : posts) {
+                    List<Staff> staffByPostId = staffService.findStaffByPostId(post.getPostId());
+                    for (Staff staff1 : staffByPostId) {
+                        staffs.add(staff1);
+                    }
+                }
+                ActionContext.getContext().getSession().put("staffs", staffs);
+            } else {
+                List<Staff> staffs = staffService.findStaffByPostId(staff.getPost().getPostId());
+                ActionContext.getContext().getSession().put("staffs", staffs);
+            }
+        } else {
+            if (staff.getDepartment().getDepId().equals("-1")) {
+                List<Staff> staffs = staffService.findStaffByStaffName(staff.getStaffName());
+                ActionContext.getContext().getSession().put("staffs", staffs);
+            } else if (staff.getPost().getPostId().equals("-1")) {
+                List<Post> posts = postService.findPostByDepId(staff.getDepartment().getDepId());
+                List<Staff> staffs = new ArrayList<>();
+                for (Post post : posts) {
+                    List<Staff> staffByPostId = staffService.findStaffByPostIdAndStaffName(post.getPostId(),staff.getStaffName());
+                    for (Staff staff1 : staffByPostId) {
+                        staffs.add(staff1);
+                    }
+                }
+                ActionContext.getContext().getSession().put("staffs", staffs);
+            } else {
+                List<Staff> staffs = staffService.findStaffByPostIdAndStaffName(staff.getPost().getPostId(),staff.getStaffName());
+                ActionContext.getContext().getSession().put("staffs", staffs);
+            }
+        }
+        return SUCCESS;
+    }
 
     public String addStaff() {
 
@@ -81,7 +115,6 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
     }
 
     public String findDepartmentAndPost() {
-        System.out.println(staff.getStaffId());
         staff = staffService.findByStaffId(staff.getStaffId());
         List<Department> departments = departmentService.findAllDepartment();
         ActionContext.getContext().getSession().put("departments", departments);
@@ -91,8 +124,13 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
         return SUCCESS;
     }
 
-    public String editStaff(){
-        System.out.println(staff);
+    public String editStaff() {
+        Department byId = departmentService.findById(staff.getDepartment().getDepId());
+        staff.setDepartment(byId);
+        staff.getPost().setDepartment(byId);
+        Post post1 = postService.findPostByPostId(staff.getPost().getPostId());
+        staff.setPost(post1);
+        staffService.editStaff(staff);
         return SUCCESS;
     }
 

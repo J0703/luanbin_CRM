@@ -17,10 +17,6 @@ public class StaffServiceImpl implements StaffService {
         return staffDao.login(name, password);
     }
 
-    @Override
-    public List<Staff> findStaff(String department, String post) {
-        return staffDao.findStaff(department,post);
-    }
 
     @Override
     public List<Staff> findAll() {
@@ -35,6 +31,27 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public Staff findByStaffId(String staffId) {
         return staffDao.findByStaffId(staffId);
+    }
+
+    @Override
+    public void editStaff(Staff staff) {
+        staffDao.editStaff(staff);
+    }
+
+    @Override
+    public List<Staff> findStaffByPostId(String postId) {
+        return staffDao.findStaffByPostId(postId);
+    }
+
+    @Override
+    public List<Staff> findStaffByPostIdAndStaffName(String postId, String staffName) {
+        return staffDao.findStaffByPostIdAndStaffName(postId,staffName);
+    }
+
+
+    @Override
+    public List<Staff> findStaffByStaffName(String staffName) {
+        return staffDao.findStaffByStaffName(staffName);
     }
 
     public StaffDao getStaffDao() {

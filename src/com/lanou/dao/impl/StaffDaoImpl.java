@@ -22,12 +22,6 @@ public class StaffDaoImpl extends BaseDaoImpl<Staff> implements StaffDao {
         return users.size() > 0;
     }
 
-    @Override
-    public List<Staff> findStaff(String department, String post) {
-        Object[] params = {department,post};
-        return (List<Staff>) getHibernateTemplate().find("from Staff where loginName=? and loginPwd=?", params);
-
-    }
 
     @Override
     public List<Staff> findAll() {
@@ -41,9 +35,35 @@ public class StaffDaoImpl extends BaseDaoImpl<Staff> implements StaffDao {
 
     @Override
     public Staff findByStaffId(String staffId) {
-        Map<String,Object> map = new HashMap<>();
-        map.put("id",staffId);
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", staffId);
         return findSingle("from Staff where staffId=:id", map);
+    }
+
+    @Override
+    public void editStaff(Staff staff) {
+        update(staff);
+    }
+
+    @Override
+    public List<Staff> findStaffByPostId(String postId) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", postId);
+        return find("from Staff where pst_id=:id", map);
+    }
+
+    @Override
+    public List<Staff> findStaffByPostIdAndStaffName(String postId, String staffName) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", postId);
+        return find("from Staff where post_id=:id and staffName like '%" + staffName + "%'", map);
+    }
+
+
+
+    @Override
+    public List<Staff> findStaffByStaffName(String staffName) {
+        return findAll("from Staff where staffName like '%" + staffName + "%'");
     }
 
     /**

@@ -25,7 +25,7 @@
 
         <td width="57%" align="right">
             <%--高级查询 --%>
-            <a href="javascript:void(0)" onclick="condition()"><img
+            <a href="javascript:void(0)" onclick="document.forms[0].submit()"><img
                     src="${pageContext.request.contextPath}/images/button/gaojichaxun.gif"/></a>
             <%--员工注入 --%>
             <a href="${pageContext.request.contextPath}/pages/staff/addStaff.jsp">
@@ -38,13 +38,13 @@
 </table>
 
 <!-- 查询条件：马上查询 -->
-<form staffId="conditionFormId" action="${pageContext.request.contextPath}/staff/staffAction_findAll" method="Post">
+<form staffId="conditionFormId" action="${pageContext.request.contextPath}/showStaff.action" method="Post">
     <table width="88%" border="0" style="margin: 20px;">
         <tr>
             <td width="80px">部门：</td>
             <td width="200px">
 
-                <select name="department" id="s1">
+                <select name="department.depId" id="s1">
 
                 </select>
 
@@ -52,7 +52,7 @@
             <td width="80px">职务：</td>
             <td width="200px">
 
-                <select name="post" id="s2">
+                <select name="post.postId" id="s2">
                 </select>
 
             </td>
