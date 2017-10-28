@@ -3,7 +3,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.lanou.domain.Department" table="crm_department">
+    <class name="com.lanou.dps.domain.Department" table="crm_department">
         <id name="depId" length="32">
             <generator class="uuid"/>
         </id>
@@ -16,7 +16,7 @@
              inverse="false"
              lazy="false">
             <key column="department_id"/>
-            <one-to-many class="com.lanou.domain.Post"/>
+            <one-to-many class="com.lanou.dps.domain.Post"/>
         </set>
     </class>
 

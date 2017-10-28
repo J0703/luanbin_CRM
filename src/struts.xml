@@ -92,4 +92,22 @@
             <result name="success" type="chain">listStaff</result>
         </action>
     </package>
+
+    <package name="course" extends="json-default">
+        <action name="find"
+                class="courseTypeAction"
+                method="find">
+            <result name="success">/pages/coursetype/listCourse.jsp</result>
+        </action>
+        <action name="findAll"
+                class="courseTypeAction"
+                method="findAll">
+            <result name="success">/pages/coursetype/listCourse.jsp</result>
+        </action>
+        <action name="addOrEditUI"
+                class="courseTypeAction"
+                method="addOrEditUI">
+            <result name="success" type="chain">findAll</result>
+        </action>
+    </package>
 </struts>

@@ -9,7 +9,7 @@
     <context:component-scan base-package="com.lanou"/>
 
     <!-- 配置hibernate -->
-    
+
     <!-- 1. 配置数据库连接池 -->
     <bean id="dataSource"
           class="org.apache.commons.dbcp.BasicDataSource">
@@ -58,41 +58,55 @@
     <!-- 5. 配置spring aop -->
     <aop:config>
         <!-- 配置切入点 -->
-        <aop:pointcut id="pointcut" expression="execution(* com.lanou.service.impl.*.*(..))"/>
+        <aop:pointcut id="pointcut" expression="execution(* com.lanou.*.service.impl.*.*(..))"/>
         <!-- 配置通知 -->
         <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
     </aop:config>
 
 
-
+    <!-- 员工配置 -->
     <bean id="staffDao"
-          class="com.lanou.dao.impl.StaffDaoImpl">
+          class="com.lanou.dps.dao.impl.StaffDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="com.lanou.service.impl.StaffServiceImpl"
+    <bean class="com.lanou.dps.service.impl.StaffServiceImpl"
           id="userService">
         <property name="staffDao" ref="staffDao"/>
     </bean>
 
-
+    <!-- 部门配置-->
     <bean id="departmentDao"
-          class="com.lanou.dao.impl.DepartmentDaoImpl">
+          class="com.lanou.dps.dao.impl.DepartmentDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="com.lanou.service.impl.DepartmentServiceImpl"
+    <bean class="com.lanou.dps.service.impl.DepartmentServiceImpl"
           id="departmentService">
         <property name="departmentDao" ref="departmentDao"/>
     </bean>
 
+    <!-- 职务配置 -->
     <bean id="postDao"
-          class="com.lanou.dao.impl.PostDaoImpl">
+          class="com.lanou.dps.dao.impl.PostDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean class="com.lanou.service.impl.PostServiceImpl"
+    <bean class="com.lanou.dps.service.impl.PostServiceImpl"
           id="postService">
         <property name="postDao" ref="postDao"/>
     </bean>
+
+
+    <!-- 课程配置 -->
+    <bean class="com.lanou.cc.dao.impl.CourseTypeDaoImpl"
+          id="courseTypeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean class="com.lanou.cc.service.impl.CourseTypeServiceImpl"
+          id="courseTypeService">
+        <property name="courseTypeDao" ref="courseTypeDao"/>
+    </bean>
+
 </beans>
