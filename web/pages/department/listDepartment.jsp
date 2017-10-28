@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -46,7 +47,7 @@
         <td width="6%" align="center">部门名称</td>
         <td width="7%" align="center">编辑</td>
     </tr>
-    <s:iterator value="#session.departments" var="depart">
+    <s:iterator value="#pageBean.data" var="depart">
         <tr class="tabtd1">
             <td align="center">${depart.depName}</td>
             <td width="7%" align="center">
@@ -63,12 +64,20 @@
 <table border="0" cellspacing="0" cellpadding="0" align="center">
     <tr>
         <td align="right">
-            <span>第1/3页</span>
+            <span>第<s:property value="#pageBean.pageNum"/>/<s:property value="#pageBean.totalPage"/>页</span>
             <span>
-        	<a href="#">[首页]</a>&nbsp;&nbsp;
-            <a href="#">[上一页]</a>&nbsp;&nbsp;
-            <a href="#">[下一页]</a>&nbsp;&nbsp;
-            <a href="#">[尾页]</a>
+                <a href="findAllDepartmentP">[首页]</a>&nbsp;&nbsp;
+            <a href="findAllDepartmentP?pageNum=${pageBean.pageNum - 1}">[上一页]</a>&nbsp;&nbsp;
+            <a
+                    <c:choose>
+
+                        <c:when test="${pageBean.pageNum >= pageBean.totalPage}">href="#"</c:when>
+
+                        <c:otherwise>href="findAllDepartmentP?pageNum=${pageBean.pageNum + 1}"</c:otherwise>
+
+                    </c:choose>
+            >[下一页]</a>&nbsp;&nbsp;
+            <a href="findAllDepartmentP?pageNum=${pageBean.totalPage}">[尾页]</a>
         </span>
         </td>
     </tr>

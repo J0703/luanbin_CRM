@@ -40,9 +40,9 @@
 
 <%--条件查询 start --%>
 
-<form action="${pageContext.request.contextPath}/find.action" method="post">
+<s:form namespace="/" action="findAll">
     <table width="88%" border="0" class="emp_table" style="width:80%;">
-        <input type="hidden" name="pageNum" value="1">
+        <s:hidden id="pageNum" name="pageNum" value="1"/>
         <tr>
             <td width="10%">课程类别：</td>
             <td><input type="text" name="courseName" size="30" value=""></td>
@@ -62,7 +62,7 @@
                                                                                         size="12" value=""/></td>
         </tr>
     </table>
-</form>
+</s:form>
 
 <%--条件查询 end --%>
 
@@ -101,29 +101,29 @@
         <td align="right">
             <span>第<s:property value="#pageBean.pageNum"/>/<s:property value="#pageBean.totalPage"/>页</span>
             <span>
-                <a href="findAll.action">[首页]</a>&nbsp;&nbsp;
-            <a href="findAll.action?pageNum=${pageBean.pageNum - 1}">[上一页]</a>&nbsp;&nbsp;
-            <a
-                    <c:choose>
+                <%--<a href="findAll.action">[首页]</a>&nbsp;&nbsp;--%>
+            <%--<a href="findAll.action?pageNum=${pageBean.pageNum - 1}">[上一页]</a>&nbsp;&nbsp;--%>
+            <%--<a--%>
+                    <%--<c:choose>--%>
 
-                        <c:when test="${pageBean.pageNum >= pageBean.totalPage}">href="#"</c:when>
+                        <%--<c:when test="${pageBean.pageNum >= pageBean.totalPage}">href="#"</c:when>--%>
 
-                        <c:otherwise>href="findAll.action?pageNum=${pageBean.pageNum + 1}"</c:otherwise>
+                        <%--<c:otherwise>href="findAll.action?pageNum=${pageBean.pageNum + 1}"</c:otherwise>--%>
 
-                    </c:choose>
-            >[下一页]</a>&nbsp;&nbsp;
-            <a href="findAll.action?pageNum=${pageBean.totalPage}">[尾页]</a>
-                <%--<s:if test="#pageBean.pageNum >= 1">--%>
-                    <%--<a href="javascript:void(0)" onclick="showPage(1)">[首页]</a>&nbsp;&nbsp;--%>
-                    <%--<a href="javascript:void(0)" onclick="showPage(--%>
-                        <%--${pageBean.pageNum - 1})">[上一页]</a>&nbsp;&nbsp;--%>
-                <%--</s:if>--%>
-                <%--<s:if test="#pageBean.pageNum <= #pageBean.totalPage">--%>
-                    <%--<a href="javascript:void(0)" onclick="showPage(--%>
-                        <%--${pageBean.pageNum + 1})">[下一页]</a>&nbsp;&nbsp;--%>
-                    <%--<a href="javascript:void(0)"--%>
-                       <%--onclick="showPage(${pageBean.totalPage})">[尾页]</a>--%>
-                <%--</s:if>--%>
+                    <%--</c:choose>--%>
+            <%-->[下一页]</a>&nbsp;&nbsp;--%>
+            <%--<a href="findAll.action?pageNum=${pageBean.totalPage}">[尾页]</a>--%>
+                <s:if test="#pageBean.pageNum gt 1">
+                    <a href="javascript:void(0)" onclick="showPage(1)">[首页]</a>&nbsp;&nbsp;
+                    <a href="javascript:void(0)" onclick="showPage(
+                        <s:property value="#pageBean.pageNum - 1 "/> )">[上一页]</a>&nbsp;&nbsp;
+                </s:if>
+                <s:if test="#pageBean.pageNum lt #pageBean.totalPage">
+                    <a href="javascript:void(0)" onclick="showPage(
+                        <s:property value="#pageBean.pageNum + 1"/> )">[下一页]</a>&nbsp;&nbsp;
+                    <a href="javascript:void(0)"
+                       onclick="showPage(<s:property value="#pageBean.totalPage"/>)">[尾页]</a>
+                </s:if>
         </span>
         </td>
     </tr>

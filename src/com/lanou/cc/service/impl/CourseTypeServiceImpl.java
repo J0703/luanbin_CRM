@@ -2,8 +2,8 @@ package com.lanou.cc.service.impl;
 
 import com.lanou.cc.dao.CourseTypeDao;
 import com.lanou.cc.domain.CourseType;
-import com.lanou.cc.domain.PageBean;
 import com.lanou.cc.service.CourseTypeService;
+import com.lanou.dps.util.PageBean;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
 package com.lanou.cc.action;
 
 import com.lanou.cc.domain.CourseType;
-import com.lanou.cc.domain.PageBean;
 import com.lanou.cc.service.CourseTypeService;
+import com.lanou.dps.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by dllo on 2017/10/27.
@@ -28,17 +27,19 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<Cours
     private int pageNum = 1;
     private int pageSize = 3;
 
+    //分页
     public String findAll() {
         PageBean<CourseType> all = courseTypeService.findAll(courseType, pageNum, pageSize);
         ActionContext.getContext().put("pageBean",all);
         return SUCCESS;
     }
 
-    public String find() {
-        List<CourseType> courseTypes = courseTypeService.find(courseType);
-        ActionContext.getContext().put("courseTypes", courseTypes);
-        return SUCCESS;
-    }
+    //原来的方法
+//    public String find() {
+//        List<CourseType> courseTypes = courseTypeService.find(courseType);
+//        ActionContext.getContext().put("courseTypes", courseTypes);
+//        return SUCCESS;
+//    }
 
 
     public String addOrEditUI() {

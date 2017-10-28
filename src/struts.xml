@@ -27,6 +27,12 @@
                 method="findAllDepartment">
             <result name="success">/pages/department/listDepartment.jsp</result>
         </action>
+
+        <action name="findAllDepartmentP"
+                class="departmentAction"
+                method="findAllDepartmentP">
+            <result name="success">/pages/department/listDepartment.jsp</result>
+        </action>
         <action name="findAllDepartment1"
                 class="departmentAction"
                 method="findAllDepartment">
@@ -94,11 +100,11 @@
     </package>
 
     <package name="course" extends="json-default">
-        <action name="find"
-                class="courseTypeAction"
-                method="find">
-            <result name="success">/pages/coursetype/listCourse.jsp</result>
-        </action>
+        <!--<action name="find"-->
+                <!--class="courseTypeAction"-->
+                <!--method="find">-->
+            <!--<result name="success">/pages/coursetype/listCourse.jsp</result>-->
+        <!--</action>-->
         <action name="findAll"
                 class="courseTypeAction"
                 method="findAll">
@@ -107,7 +113,7 @@
         <action name="addOrEditUI"
                 class="courseTypeAction"
                 method="addOrEditUI">
-            <result name="success" type="chain">findAll</result>
+            <result name="success" type="redirectAction">findAll</result>
         </action>
     </package>
 </struts>

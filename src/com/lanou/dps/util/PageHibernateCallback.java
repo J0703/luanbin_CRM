@@ -27,6 +27,12 @@ public class PageHibernateCallback<T> implements HibernateCallback<List<T>> {
         this.pageSize = pageSize;
     }
 
+    public PageHibernateCallback(String hql, int startIndex, int pageSize) {
+        this.hql = hql;
+        this.startIndex = startIndex;
+        this.pageSize = pageSize;
+    }
+
     @Override
     public List<T> doInHibernate(Session session) throws HibernateException {
 
