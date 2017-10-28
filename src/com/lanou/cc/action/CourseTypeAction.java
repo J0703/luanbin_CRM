@@ -30,7 +30,7 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<Cours
     //分页
     public String findAll() {
         PageBean<CourseType> all = courseTypeService.findAll(courseType, pageNum, pageSize);
-        ActionContext.getContext().put("pageBean",all);
+        ActionContext.getContext().put("pageBean", all);
         return SUCCESS;
     }
 

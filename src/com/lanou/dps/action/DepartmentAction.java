@@ -25,7 +25,7 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
     @Resource
     private DepartmentService departmentService;
 
-    private int pageNum = 1;
+    private int pageNum;
     private int pageSize = 3;
 
     public String addDepartment() {
@@ -41,11 +41,15 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
 
     }
 
-    public String findAllDepartmentP(){
+    public String findAllDepartmentP() {
+        if (pageNum == 0) {
+            pageNum = 1;
+        }
         PageBean<CourseType> all = departmentService.findAllDepartmentP(department, pageNum, pageSize);
-        ActionContext.getContext().put("pageBean",all);
+        ActionContext.getContext().put("pageBean", all);
         return SUCCESS;
     }
+
     public String findAllDepartment() {
 
         List<Department> departments = departmentService.findAllDepartment();

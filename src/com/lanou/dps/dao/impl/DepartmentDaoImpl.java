@@ -51,9 +51,10 @@ public class DepartmentDaoImpl extends BaseDaoImpl<Department> implements Depart
     @Override
     public int getTotalRecord() {
 
-         String  hql = "select count(d) from Department d where 1=1 ";
+         String  hql = "select count(d) from Department d where 1=1";
 
         List<Long> find = (List<Long>) getHibernateTemplate().find(hql);
+
         if (find != null) {
             return find.get(0).intValue();
         }
