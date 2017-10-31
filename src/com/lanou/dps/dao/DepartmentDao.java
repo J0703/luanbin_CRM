@@ -22,5 +22,5 @@ public interface DepartmentDao extends BaseDao<Department>{
 
     int getTotalRecord();
 
-    List<CourseType> find1(int startIndex, int pageSize);
+    List<Department> find1(int startIndex, int pageSize);
 }

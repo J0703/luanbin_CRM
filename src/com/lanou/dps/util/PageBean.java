@@ -23,10 +23,47 @@ public class PageBean<T> {
     // 数据
     private List<T> data; //分页数据
 
+    // 动态显示进度条
+    private int start; // 动态显示条的开始
+    private int end; // 动态显示条的结束
+
+
+    @Override
+    public String toString() {
+        return "PageBean{" +
+                "pageNum=" + pageNum +
+                ", pageSize=" + pageSize +
+                ", tatalRecord=" + tatalRecord +
+                ", startIndex=" + startIndex +
+                ", totalPage=" + totalPage +
+                ", data=" + data +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
+    }
+
     public PageBean(int pageNum, int pageSize, int tatalRecord) {
         this.pageNum = pageNum;
         this.pageSize = pageSize;
         this.tatalRecord = tatalRecord;
+        this.start = 1;
+        this.end = 10;
+//        if(this.totalPage <= 10){
+//            this.end = this.totalPage;
+//        } else {
+//            // totalPage = 23
+//            //3.3 当前页 前4后5
+//            this.start = this.pageNum - 4;
+//            this.end = this.pageNum + 5;
+//            // pageNum = 1
+//            if(this.start < 1){
+//                this.start = 1;
+//                this.end = 10; }
+//            // pageNum = 23
+//            if(this.end > this.totalPage){
+//                this.end = this.totalPage;
+//                this.start = this.totalPage - 9;
+//            } }
     }
 
     public int getPageNum() {
@@ -87,6 +124,22 @@ public class PageBean<T> {
 
     public void setData(List<T> data) {
         this.data = data;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+    public void setEnd(int end) {
+        this.end = end;
     }
 }
 

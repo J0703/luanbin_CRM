@@ -13,7 +13,7 @@ public class StaffServiceImpl implements StaffService {
     private StaffDao staffDao;
 
     @Override
-    public boolean login(String name, String password) {
+    public Staff login(String name, String password) {
         return staffDao.login(name, password);
     }
 

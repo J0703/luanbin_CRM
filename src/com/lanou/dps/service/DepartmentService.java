@@ -20,5 +20,5 @@ public interface DepartmentService {
 
     Department findById(String department_id);
 
-    PageBean<CourseType> findAllDepartmentP(Department department, int pageNum, int pageSize);
+    PageBean<Department> findAllDepartmentP(Department department, int pageNum, int pageSize);
 }

@@ -21,13 +21,13 @@ public class CourseTypeDaoImpl extends HibernateDaoSupport implements CourseType
     @Override
     public List<CourseType> find(String condition, Object[] params) {
         String hql = "from CourseType where 1=1" + condition;
-        return (List<CourseType>) getHibernateTemplate().find(hql,params);
+        return (List<CourseType>) getHibernateTemplate().find(hql, params);
     }
 
     @Override
     public CourseType findById(String courseTypeId) {
 
-        return getHibernateTemplate().get(CourseType.class,courseTypeId);
+        return getHibernateTemplate().get(CourseType.class, courseTypeId);
     }
 
     @Override
@@ -43,18 +43,18 @@ public class CourseTypeDaoImpl extends HibernateDaoSupport implements CourseType
 
     @Override
     public int getTotalRecord(String condition, Object[] params) {
-        String hql="select count(c) from CourseType c where 1=1 "+condition;
-        List<Long> find = (List<Long>) getHibernateTemplate().find(hql,params);
-        if (find!=null){
+        String hql = "select count(c) from CourseType c where 1=1 " + condition;
+        List<Long> find = (List<Long>) getHibernateTemplate().find(hql, params);
+        if (find != null) {
             return find.get(0).intValue();
         }
         return 0;
     }
 
     @Override
-    public List<CourseType> find1(String condition, Object[] params,int startIndex, int pageSize) {
-        String hql = "from CourseType where 1=1 "+condition;
-        return getHibernateTemplate().execute(new PageHibernateCallback<CourseType>(hql,params,startIndex,pageSize));
+    public List<CourseType> find1(String condition, Object[] params, int startIndex, int pageSize) {
+        String hql = "from CourseType where 1=1 " + condition;
+        return getHibernateTemplate().execute(new PageHibernateCallback<CourseType>(hql, params, startIndex, pageSize));
     }
 
 }

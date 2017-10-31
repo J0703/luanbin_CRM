@@ -9,9 +9,22 @@
     <!-- 将struts中的对象创建交给spring完成 -->
     <constant name="struts.objectFactory" value="spring"/>
     <package name="ssh" extends="json-default">
+        <interceptors>
+            <interceptor name="Interceptor" class="com.lanou.dps.util.Interceptor">
+                <param name="includeMethods">addDepartment,addPost,addStaff,editStaff</param>
+            </interceptor>
+            <interceptor-stack name="myInterceptorStack">
+                <interceptor-ref name="Interceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="myInterceptorStack"/>
+        <global-results>
+            <result name="miss">/pages/error.jsp</result>
+        </global-results>
         <action name="login"
                 class="staffAction"
-                method="login">
+               method="login">
             <result name="success">/pages/frame.jsp</result>
             <result name="error">/pages/error.jsp</result>
             <result name="input">/pages/login.jsp</result>
@@ -19,7 +32,7 @@
         <action name="addDepartment"
                 class="departmentAction"
                 method="addDepartment">
-            <result name="success" type="chain">findAllDepartment</result>
+            <result name="success" type="chain">findAllDepartmentP</result>
             <result name="error">/pages/department/listDepartment.jsp</result>
         </action>
         <action name="findAllDepartment"
@@ -38,11 +51,11 @@
                 method="findAllDepartment">
             <result name="success">/pages/post/addOrEditPost.jsp</result>
         </action>
-    </package>
-    <package name="post" extends="json-default">
+
+        <!-- 职务管理 -->
         <action name="findAllPost"
                 class="postAction"
-                method="findAllPost">
+                method="findAllPostP">
             <result name="success">/pages/post/listPost.jsp</result>
         </action>
         <action name="addPost"
@@ -51,10 +64,9 @@
             <result name="success" type="chain">findAllPost</result>
             <result name="error">/pages/post/listPost.jsp</result>
         </action>
-    </package>
 
 
-    <package name="staff" extends="json-default">
+        <!-- 员工管理 -->
         <action name="findDepartment"
                 class="staffAction"
                 method="findDepartment">
@@ -69,6 +81,7 @@
                 <param name="root">posts</param>
             </result>
         </action>
+
         <action name="showStaff"
                 class="staffAction"
                 method="showStaff">
@@ -114,6 +127,19 @@
                 class="courseTypeAction"
                 method="addOrEditUI">
             <result name="success" type="redirectAction">findAll</result>
+        </action>
+    </package>
+
+    <package name="classes" extends="json-default">
+        <action name="addOrUpdateClasses"
+                class="classesAction"
+                method="addOrUpdateClasses">
+            <result name="success">/pages/classesm/listClass.jsp</result>
+        </action>
+        <action name="findAllClasses"
+                class="classesAction"
+                method="findAllClasses">
+            <result name="success">/pages/classesm/listClass.jsp</result>
         </action>
     </package>
 </struts>

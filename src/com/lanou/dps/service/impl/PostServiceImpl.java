@@ -1,8 +1,10 @@
 package com.lanou.dps.service.impl;
 
 import com.lanou.dps.dao.PostDao;
+import com.lanou.dps.domain.Department;
 import com.lanou.dps.domain.Post;
 import com.lanou.dps.service.PostService;
+import com.lanou.dps.util.PageBean;
 
 import java.util.List;
 
@@ -43,5 +45,14 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post findPostByPostId(String postId) {
         return postDao.findPostByPostId(postId);
+    }
+
+    @Override
+    public PageBean<Post> findAllDepartmentP(Post post, int pageNum, int pageSize) {
+        int totalRecord = postDao.getTotalRecord();
+        PageBean<Post> pageBean = new PageBean<>(pageNum,pageSize,totalRecord);
+        List<Post> data = postDao.find1(pageBean.getStartIndex(), pageBean.getPageSize());
+        pageBean.setData(data);
+        return pageBean;
     }
 }

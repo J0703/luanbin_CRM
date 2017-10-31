@@ -9,8 +9,9 @@
 </head>
 <body>
 	<font color="#f00">
-		系统繁忙，请稍后重试
+		出错了~~~
 		<s:property value="#session.name"/>
+		<h1><s:property value="#msg"/></h1>
 	</font>
 </body>
 </html>

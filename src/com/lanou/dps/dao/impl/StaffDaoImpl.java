@@ -14,11 +14,11 @@ import java.util.Map;
  */
 public class StaffDaoImpl extends BaseDaoImpl<Staff> implements StaffDao {
     @Override
-    public boolean login(String name, String password) {
-
-        Object[] params = {name, password};
-        List<Staff> users = (List<Staff>) getHibernateTemplate().find("from Staff where loginName=? and loginPwd=?", params);
-        return users.size() > 0;
+    public Staff login(String name, String password) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", name);
+        map.put("password",password);
+        return findSingle("from Staff where loginName=:name and loginPwd=:password",map);
     }
 
 

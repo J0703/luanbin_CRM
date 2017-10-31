@@ -6,6 +6,7 @@ import com.lanou.dps.domain.Staff;
 import com.lanou.dps.service.PostService;
 import com.lanou.dps.service.StaffService;
 import com.lanou.dps.service.DepartmentService;
+import com.lanou.dps.util.CrmStringUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -96,6 +97,7 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 
         Department byId = departmentService.findById(staff.getDepartment().getDepId());
         staff.setDepartment(byId);
+        staff.setLoginPwd(CrmStringUtils.getMD5Value(staff.getLoginPwd()));
         staff.getPost().setDepartment(byId);
         Post post1 = postService.findPostByPostId(staff.getPost().getPostId());
         staff.setPost(post1);
@@ -130,11 +132,12 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
     }
 
     public String login() {
-
-        if (staffService.login(staff.getLoginName(), staff.getLoginPwd())) {
-            ActionContext.getContext().getSession().put("name", staff.getLoginName());
+        Staff s = staffService.login(staff.getLoginName(), staff.getLoginPwd());
+        if (s != null) {
+            ActionContext.getContext().getSession().put("staff", s);
             return SUCCESS;
         }
+
         return ERROR;
     }
 

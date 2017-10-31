@@ -8,7 +8,7 @@ import java.util.List;
  * Created by dllo on 2017/10/24.
  */
 public interface StaffDao {
-    boolean login(String name, String password);
+    Staff login(String name, String password);
     
 
     List<Staff> findAll();

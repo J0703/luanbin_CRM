@@ -1,10 +1,12 @@
 package com.lanou.dps.dao.impl;
 
 import com.lanou.dps.dao.BaseDao;
+import com.lanou.dps.util.PageHibernateCallback;
 import org.hibernate.*;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +14,16 @@ import java.util.Map;
  * Created by dllo on 2017/10/20.
  */
 public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
+
+
+    private Class<?> beanClass;
+
+    // 在运行的时候，获取到泛型 T的具体类型
+    public BaseDaoImpl() {
+        ParameterizedType paramType= (ParameterizedType) this.getClass().getGenericSuperclass(); // 获取所有实际参数值--所有。而我们只需要一个
+        beanClass = (Class<?>) paramType.getActualTypeArguments()[0];
+
+    }
 
     @Override
     public T findById(Serializable id, Class<T> tClass) {
@@ -68,6 +80,21 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
     public void update(T t) {
         Session session = currentSession();
         session.merge(t);
+    }
+
+    @Override
+    public int getTotalRecord(String condition, Object[] params) {
+        String hql = "select count(c) from " + beanClass.getName() + " c where 1=1 " + condition;
+        List<Long> find = (List<Long>) getHibernateTemplate().find(hql, params);
+        if (find != null) {
+            return find.get(0).intValue();
+        }
+        return 0;
+    }
+
+    public List<T> findAll1(String condition, Object[] params, int startIndex, int pageSize) {
+        String hql = "from " + beanClass.getName() + " where 1=1 " + condition;
+        return this.getHibernateTemplate().execute(new PageHibernateCallback<T>(hql,params,startIndex,pageSize));
     }
 
 }

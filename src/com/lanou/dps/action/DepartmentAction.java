@@ -1,6 +1,5 @@
 package com.lanou.dps.action;
 
-import com.lanou.cc.domain.CourseType;
 import com.lanou.dps.domain.Department;
 import com.lanou.dps.service.DepartmentService;
 import com.lanou.dps.util.PageBean;
@@ -45,7 +44,7 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
         if (pageNum == 0) {
             pageNum = 1;
         }
-        PageBean<CourseType> all = departmentService.findAllDepartmentP(department, pageNum, pageSize);
+        PageBean<Department> all = departmentService.findAllDepartmentP(department, pageNum, pageSize);
         ActionContext.getContext().put("pageBean", all);
         return SUCCESS;
     }

@@ -118,6 +118,13 @@
                     <a href="javascript:void(0)" onclick="showPage(
                         <s:property value="#pageBean.pageNum - 1 "/> )">[上一页]</a>&nbsp;&nbsp;
                 </s:if>
+                    <%--动态显示条 --%>
+                    <s:iterator begin="#pageBean.start" end="#pageBean.end" var="num">
+                        <s:if test="#num <= #pageBean.totalPage">
+                            <a href="javascript:void(0)" onclick="showPage(<s:property value="#num"/>)">
+                            <s:property value="#num"/> </a>&nbsp;&nbsp;
+                        </s:if>
+                    </s:iterator>
                 <s:if test="#pageBean.pageNum lt #pageBean.totalPage">
                     <a href="javascript:void(0)" onclick="showPage(
                         <s:property value="#pageBean.pageNum + 1"/> )">[下一页]</a>&nbsp;&nbsp;

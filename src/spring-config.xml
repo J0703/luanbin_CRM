@@ -109,4 +109,14 @@
         <property name="courseTypeDao" ref="courseTypeDao"/>
     </bean>
 
+    <!-- 班级配置 -->
+    <bean class="com.lanou.cc.dao.impl.ClassesDaoImpl"
+          id="classesDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean class="com.lanou.cc.service.impl.ClassesServiceImpl"
+          id="classesService">
+        <property name="classesDao" ref="classesDao"/>
+    </bean>
 </beans>

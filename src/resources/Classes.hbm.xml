@@ -28,6 +28,7 @@
 
         <many-to-one name="courseType"
                      class="com.lanou.cc.domain.CourseType"
-                     column="courseTypeId"/>
+                     column="courseTypeId"
+        lazy="false"/>
     </class>
 </hibernate-mapping>

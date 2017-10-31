@@ -68,6 +68,13 @@
             <span>
                 <a href="findAllDepartmentP">[首页]</a>&nbsp;&nbsp;
             <a href="findAllDepartmentP?pageNum=${pageBean.pageNum - 1}">[上一页]</a>&nbsp;&nbsp;
+                <%--动态显示条 --%>
+                    <s:iterator begin="#pageBean.start" end="#pageBean.end" var="num">
+                        <s:if test="#num <= #pageBean.totalPage">
+                            <a href="findAllDepartmentP?pageNum=${num}">
+                            <s:property value="#num"/> </a>&nbsp;&nbsp;
+                        </s:if>
+                    </s:iterator>
             <a
                     <c:choose>
 

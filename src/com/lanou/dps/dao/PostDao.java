@@ -17,4 +17,8 @@ public interface PostDao {
     List<Post> findPostByDepId(String depId);
 
     Post findPostByPostId(String postId);
+
+    int getTotalRecord();
+
+    List<Post> find1(int startIndex, int pageSize);
 }

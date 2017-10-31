@@ -1,6 +1,7 @@
 package com.lanou.dps.service;
 
 import com.lanou.dps.domain.Post;
+import com.lanou.dps.util.PageBean;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface PostService {
     List<Post> findPostByDepId(String depId);
 
     Post findPostByPostId(String postId);
+
+    PageBean<Post> findAllDepartmentP(Post post, int pageNum, int pageSize);
 }

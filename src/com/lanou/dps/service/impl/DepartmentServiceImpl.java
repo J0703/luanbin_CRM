@@ -42,10 +42,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public PageBean<CourseType> findAllDepartmentP(Department department, int pageNum, int pageSize) {
+    public PageBean<Department> findAllDepartmentP(Department department, int pageNum, int pageSize) {
         int totalRecord = departmentDao.getTotalRecord();
-        PageBean<CourseType> pageBean = new PageBean<>(pageNum,pageSize,totalRecord);
-        List<CourseType> data = departmentDao.find1(pageBean.getStartIndex(), pageBean.getPageSize());
+        PageBean<Department> pageBean = new PageBean<>(pageNum,pageSize,totalRecord);
+        List<Department> data = departmentDao.find1(pageBean.getStartIndex(), pageBean.getPageSize());
         pageBean.setData(data);
         return pageBean;
     }

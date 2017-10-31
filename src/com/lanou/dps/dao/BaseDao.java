@@ -47,4 +47,9 @@ public interface BaseDao<T> {
 
 
     void update(T t);
+
+
+    int getTotalRecord(String condition, Object[] params);
+
+     List<T> findAll1(String condition, Object[] params, int startIndex, int pageSize);
 }

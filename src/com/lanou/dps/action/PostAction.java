@@ -4,6 +4,7 @@ import com.lanou.dps.domain.Department;
 import com.lanou.dps.domain.Post;
 import com.lanou.dps.service.DepartmentService;
 import com.lanou.dps.service.PostService;
+import com.lanou.dps.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -29,6 +30,10 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
     private PostService postService;
 
 
+
+    private int pageNum;
+    private int pageSize = 3;
+
     @Resource(name = "departmentService")
     private DepartmentService departmentService;
 
@@ -36,6 +41,15 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
     public String findAllPost() {
         List<Post> posts = postService.findAllPost();
         ActionContext.getContext().getSession().put("posts", posts);
+        return SUCCESS;
+    }
+    /* 分页 */
+    public String findAllPostP() {
+        if (pageNum == 0) {
+            pageNum = 1;
+        }
+        PageBean<Post> all = postService.findAllDepartmentP(post, pageNum, pageSize);
+        ActionContext.getContext().put("pageBean", all);
         return SUCCESS;
     }
 
@@ -74,5 +88,21 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
 
     public void setPostID(String postID) {
         this.postID = postID;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 }

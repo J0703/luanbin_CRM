@@ -62,9 +62,9 @@ public class DepartmentDaoImpl extends BaseDaoImpl<Department> implements Depart
     }
 
     @Override
-    public List<CourseType> find1(int startIndex, int pageSize) {
+    public List<Department> find1(int startIndex, int pageSize) {
         String hql = "from Department where 1=1 ";
-        return getHibernateTemplate().execute(new PageHibernateCallback<CourseType>(hql, startIndex, pageSize));
+        return getHibernateTemplate().execute(new PageHibernateCallback<Department>(hql, startIndex, pageSize));
     }
 
 
