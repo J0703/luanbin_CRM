@@ -33,7 +33,7 @@
 <form  action="${pageContext.request.contextPath}/addOrEditUI.action" method="Post">
 	<table width="88%" border="0" class="emp_table" style="width:80%;">
 	  <tr>
-		  <input type="text" name="courseTypeId" value="${param.courseTypeId}"/>
+		  <input type="hidden" name="courseTypeId" value="${param.courseTypeId}"/>
 	    <td width="10%">课程类别：</td>
 	    <td width="20%"><input type="text" name="courseName" value="${param.courseName}"/></td>
 	    <td width="8%">总学时：</td>

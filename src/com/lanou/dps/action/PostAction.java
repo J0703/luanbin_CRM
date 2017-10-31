@@ -54,8 +54,15 @@ public class PostAction extends ActionSupport implements ModelDriven<Post> {
     }
 
     public String addPost() {
+        if ("-1".equals(department_id)){
+            addActionError("请选择部门");
+            return INPUT;
+        }
+        if ("".equals(post.getPostName())){
+            addActionError("职务名称不能为空");
+            return INPUT;
+        }
         if (postID.equals("")) {
-            System.out.println(1);
             Department department = departmentService.findById(department_id);
             post.setDepartment(department);
             postService.addPost(post);

@@ -95,6 +95,34 @@ public class StaffAction extends ActionSupport implements ModelDriven<Staff> {
 
     public String addStaff() {
 
+        if ("".equals(staff.getLoginName())) {
+            addActionError("登录名不能为空");
+            return INPUT;
+        }
+        if ("".equals(staff.getLoginPwd())) {
+            addActionError("密码不能为空");
+            return INPUT;
+        }
+        if ("".equals(staff.getStaffName())) {
+            addActionError("姓名不能为空");
+            return INPUT;
+        }
+        if ("".equals(staff.getGender())) {
+            addActionError("性别不能为空");
+            return INPUT;
+        }
+        if ("-1".equals(staff.getDepartment().getDepId())) {
+            addActionError("请选择部门");
+            return INPUT;
+        }
+        if ("-1".equals(staff.getPost().getPostId())) {
+            addActionError("请选择职务");
+            return INPUT;
+        }
+        if (staff.getOnDutyDate() == null) {
+            addActionError("入职时间不能为空");
+            return INPUT;
+        }
         Department byId = departmentService.findById(staff.getDepartment().getDepId());
         staff.setDepartment(byId);
         staff.setLoginPwd(CrmStringUtils.getMD5Value(staff.getLoginPwd()));

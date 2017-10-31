@@ -29,7 +29,8 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
 
     public String addDepartment() {
         if (department.getDepName().trim().equals("")) {
-            return ERROR;
+            addActionError("部门名称不能为空");
+            return INPUT;
         }
         if (department.getDepId().equals("")) {
             departmentService.addDepartment(department);
@@ -46,6 +47,7 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
         }
         PageBean<Department> all = departmentService.findAllDepartmentP(department, pageNum, pageSize);
         ActionContext.getContext().put("pageBean", all);
+        System.out.println(all);
         return SUCCESS;
     }
 

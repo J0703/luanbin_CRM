@@ -43,7 +43,7 @@
             <td>选择部门：</td>
 
             <td><select name="department_id">
-                <option value="" selected>----请--选--择----</option>
+                <option value="-1" selected>----请--选--择----</option>
                 <s:iterator value="#session.departments" var="depart">
                     <option value="${depart.depId}" <c:if test="${depart.depId eq param.depId}">
                         selected
@@ -57,6 +57,8 @@
         </tr>
     </table>
 </form>
-
+<span style="color: red">
+<s:actionerror/>
+</span>
 </body>
 </html>

@@ -41,6 +41,24 @@ public class Classes {
         this.courseType = courseType;
     }
 
+    @Override
+    public String toString() {
+        return "Classes{" +
+                "classId='" + classId + '\'' +
+                ", name='" + name + '\'' +
+                ", beginTime=" + beginTime +
+                ", endTime=" + endTime +
+                ", status='" + status + '\'' +
+                ", totalCount=" + totalCount +
+                ", upgradeCount=" + upgradeCount +
+                ", changeCount=" + changeCount +
+                ", runoffCount=" + runoffCount +
+                ", remark='" + remark + '\'' +
+                ", uploadTime=" + uploadTime +
+                ", uploadPath='" + uploadPath + '\'' +
+                ", uploadFilename='" + uploadFilename + '\'' +
+                '}';
+    }
 
     public String getClassId() {
         return classId;

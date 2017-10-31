@@ -33,7 +33,7 @@
                 class="departmentAction"
                 method="addDepartment">
             <result name="success" type="chain">findAllDepartmentP</result>
-            <result name="error">/pages/department/listDepartment.jsp</result>
+            <result name="input">/pages/department/addOrEditDepartment.jsp</result>
         </action>
         <action name="findAllDepartment"
                 class="departmentAction"
@@ -63,6 +63,7 @@
                 method="addPost">
             <result name="success" type="chain">findAllPost</result>
             <result name="error">/pages/post/listPost.jsp</result>
+            <result name="input">/pages/post/addOrEditPost.jsp</result>
         </action>
 
 
@@ -97,6 +98,7 @@
                 class="staffAction"
                 method="addStaff">
             <result name="success" type="chain">listStaff</result>
+            <result name="input">/pages/staff/addStaff.jsp</result>
         </action>
 
         <action name="findDepartmentAndPost"
@@ -134,7 +136,7 @@
         <action name="addOrUpdateClasses"
                 class="classesAction"
                 method="addOrUpdateClasses">
-            <result name="success">/pages/classesm/listClass.jsp</result>
+            <result name="success" type="chain">findAllClasses</result>
         </action>
         <action name="findAllClasses"
                 class="classesAction"

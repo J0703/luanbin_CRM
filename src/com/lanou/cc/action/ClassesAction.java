@@ -6,6 +6,7 @@ import com.lanou.dps.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.util.ValueStack;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -38,7 +39,9 @@ public class ClassesAction extends ActionSupport implements ModelDriven<Classes>
             pageNum = 1;
         }
         PageBean<Classes> all = classesService.findAll(classes,pageNum,pageSize);
-        ActionContext.getContext().put("pageBean", all);
+        ActionContext.getContext().put(" ", all);
+
+        ValueStack valueStack=ActionContext.getContext().getValueStack();
         System.out.println(all);
         return SUCCESS;
     }

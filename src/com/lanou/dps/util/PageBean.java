@@ -13,7 +13,7 @@ public class PageBean<T> {
 
     private int pageSize; // 每页显示的条目数
 
-    private int tatalRecord; // 总的记录数
+    private int totalRecord; // 总的记录数
 
     // 计算项
     private int startIndex; //开始索引
@@ -33,7 +33,7 @@ public class PageBean<T> {
         return "PageBean{" +
                 "pageNum=" + pageNum +
                 ", pageSize=" + pageSize +
-                ", tatalRecord=" + tatalRecord +
+                ", totalRecord=" + totalRecord +
                 ", startIndex=" + startIndex +
                 ", totalPage=" + totalPage +
                 ", data=" + data +
@@ -45,7 +45,7 @@ public class PageBean<T> {
     public PageBean(int pageNum, int pageSize, int tatalRecord) {
         this.pageNum = pageNum;
         this.pageSize = pageSize;
-        this.tatalRecord = tatalRecord;
+        this.totalRecord = tatalRecord;
         this.start = 1;
         this.end = 10;
 //        if(this.totalPage <= 10){
@@ -82,12 +82,12 @@ public class PageBean<T> {
         this.pageSize = pageSize;
     }
 
-    public int getTatalRecord() {
-        return tatalRecord;
+    public int getTotalRecord() {
+        return totalRecord;
     }
 
-    public void setTatalRecord(int tatalRecord) {
-        this.tatalRecord = tatalRecord;
+    public void setTotalRecord(int totalRecord) {
+        this.totalRecord = totalRecord;
     }
 
     public int getStartIndex() {
@@ -102,13 +102,13 @@ public class PageBean<T> {
 
     public int getTotalPage() {
 
-        if (tatalRecord % pageSize == 0) {
+        if (totalRecord % pageSize == 0) {
 
-            totalPage = tatalRecord / pageSize;
+            totalPage = totalRecord / pageSize;
 
         } else {
 
-            totalPage = tatalRecord / pageSize + 1;
+            totalPage = totalRecord / pageSize + 1;
         }
 
         return totalPage;

@@ -42,7 +42,6 @@ public class CourseType {
                 ", totalEnd='" + totalEnd + '\'' +
                 ", courseCostStart='" + courseCostStart + '\'' +
                 ", courseCostEnd='" + courseCostEnd + '\'' +
-                ", classesSet=" + classesSet +
                 '}';
     }
 

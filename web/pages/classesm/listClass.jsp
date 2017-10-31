@@ -64,16 +64,16 @@
     </tr>
     </thead>
     <tbody>
-    <s:iterator value="#pageBean.data" var="pageBean">
+    <s:iterator value="#pageBean.data" var="classes">
         <tr class="tabtd2">
-            <td align="center">${pageBean.name}</td>
-            <td align="center">${pageBean.courseType.courseName}</td>
-            <td align="center">${pageBean.beginTime}</td>
-            <td align="center">${pageBean.endTime}</td>
-            <td align="center">${pageBean.status}</td>
-            <td align="center">${pageBean.totalCount}</td>
-            <td align="center">${pageBean.upgradeCount}</td>
-            <td align="center">${pageBean.runoffCount}</td>
+            <td align="center">${classes.name}</td>
+            <td align="center">${classes.courseType.courseName}</td>
+            <td align="center">${classes.beginTime}</td>
+            <td align="center">${classes.endTime}</td>
+            <td align="center">${classes.status}</td>
+            <td align="center">${classes.totalCount}</td>
+            <td align="center">${classes.upgradeCount}</td>
+            <td align="center">${classes.runoffCount}</td>
             <td align="center">
                 <a href="${pageContext.request.contextPath}/pages/classesm/addOrEditClass.jsp"><img
                         src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/></a>
@@ -95,21 +95,21 @@
 <table border="0" cellspacing="0" cellpadding="0" align="center">
     <tr>
         <td align="right">
-            <%--<span>第<s:property value="#pageBean.pageNum"/>/<s:property value="#pageBean.totalPage"/>页</span>--%>
-            <%--<span>--%>
-                <%--<a href="findAllClasses.action">[首页]</a>&nbsp;&nbsp;--%>
-            <%--<a href="findAllClasses.action?pageNum=${pageBean.pageNum - 1}">[上一页]</a>&nbsp;&nbsp;--%>
-            <%--<a--%>
-                    <%--<c:choose>--%>
+            <span>第<s:property value="#pageBean.pageNum"/>/<s:property value="#pageBean.totalPage"/>页</span>
+            <span>
+                <a href="findAllClasses.action">[首页]</a>&nbsp;&nbsp;
+            <a href="findAllClasses.action?pageNum=${pageBean.pageNum - 1}">[上一页]</a>&nbsp;&nbsp;
+            <a
+                    <c:choose>
 
-                        <%--<c:when test="${pageBean.pageNum >= pageBean.totalPage}">href="#"</c:when>--%>
+                        <c:when test="${pageBean.pageNum >= pageBean.totalPage}">href="#"</c:when>
 
-                        <%--<c:otherwise>href="findAllClasses.action?pageNum=${pageBean.pageNum + 1}"</c:otherwise>--%>
+                        <c:otherwise>href="findAllClasses.action?pageNum=${pageBean.pageNum + 1}"</c:otherwise>
 
-                    <%--</c:choose>--%>
-            <%-->[下一页]</a>&nbsp;&nbsp;--%>
-            <%--<a href="findAllClasses.action?pageNum=${pageBean.totalPage}">[尾页]</a>--%>
-                <%--</span>--%>
+                    </c:choose>
+            >[下一页]</a>&nbsp;&nbsp;
+            <a href="findAllClasses.action?pageNum=${pageBean.totalPage}">[尾页]</a>
+                </span>
         </td>
     </tr>
 </table>
