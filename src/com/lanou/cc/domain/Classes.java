@@ -171,4 +171,6 @@ public class Classes {
     public void setCourseType(CourseType courseType) {
         this.courseType = courseType;
     }
+
+
 }

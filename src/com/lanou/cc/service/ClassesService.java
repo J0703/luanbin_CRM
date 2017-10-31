@@ -10,4 +10,6 @@ public interface ClassesService {
     void addOrUpdateClasses(Classes classes);
 
     PageBean<Classes> findAll(Classes classes, int pageNum, int pageSize);
+
+    Classes findClassesByClassId(String classId);
 }

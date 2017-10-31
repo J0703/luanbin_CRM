@@ -64,6 +64,7 @@
     </table>
 </s:form>
 
+<s:actionerror/>
 <%--条件查询 end --%>
 
 <table border="0" cellspacing="0" cellpadding="0" style="margin-top:5px;">

@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -41,9 +42,10 @@
             <td width="8%">所属类别：</td>
             <td width="62%">
                 <select name="courseType.courseTypeId">
-                    <option value="">---请选择---</option>
-                    <option value="1">JavaEE</option>
-                    <option value="ee050687bd1a4455a153d7bbb7000009">大数据</option>
+                    <option value="-1">---请选择---</option>
+                    <s:iterator value="#courseType" var="c">
+                        <option value="${c.courseTypeId}">${c.courseName}</option>
+                    </s:iterator>
                 </select>
             </td>
         </tr>

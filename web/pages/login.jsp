@@ -26,6 +26,14 @@
             font-size: 18px;
             font-family: 微软雅黑;
         }
+        a{text-decoration: none}
+        div>a:hover{
+            font-size: xx-large;
+            color: red;
+        }
+        a:visited{
+            color: blue;
+        }
     </STYLE>
 
     <TITLE></TITLE>
@@ -69,6 +77,7 @@
             </td>
         </tr>
     </table>
+    <a href="/小游戏.jsp">不如打把游戏??</a>
 
     <script type="text/javascript">
         /* s标签中直接编写JavaScript代码时，不支持el表达式，只能提供单独的函数

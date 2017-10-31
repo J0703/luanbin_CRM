@@ -24,7 +24,7 @@
             <td width="42%" align="center">&nbsp;</td>
             <td width="36%" align="right">
                 <%--添加班级  /html/classesm/addClass.jsp--%>
-                <a href="${pageContext.request.contextPath}/pages/classesm/addOrEditClass.jsp">
+                <a href="${pageContext.request.contextPath}/findAllCourseType.action">
                     <img src="${pageContext.request.contextPath}/images/button/tianjia.gif" class="img"/>
                 </a>
                 <%--高级查询
@@ -70,26 +70,36 @@
             <td align="center">${classes.courseType.courseName}</td>
             <td align="center">${classes.beginTime}</td>
             <td align="center">${classes.endTime}</td>
-            <td align="center">${classes.status}</td>
+            <td align="center"><c:if test="${classes.status eq '0'}">未开班</c:if></td>
             <td align="center">${classes.totalCount}</td>
             <td align="center">${classes.upgradeCount}</td>
             <td align="center">${classes.runoffCount}</td>
             <td align="center">
-                <a href="${pageContext.request.contextPath}/pages/classesm/addOrEditClass.jsp"><img
+                <a href="${pageContext.request.contextPath}/pages/classesm/addOrEditClass.jsp?"><img
                         src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/></a>
             </td>
             <td align="center">
                 <a href="${pageContext.request.contextPath}/pages/classesm/showClass.jsp"><img
                         src="${pageContext.request.contextPath}/images/button/modify.gif" class="img"/></a>
             </td>
-            <td align="center" title="上次上传时间：2015-04-02">
-                <a href="${pageContext.request.contextPath}/pages/classesm/uploadClass.jsp">上传</a>
-                <a href="${pageContext.request.contextPath}/pages/classesm/downloadClass">下载</a> <br/>
+            <td align="center" title="上次上传时间：${classes.uploadTime}">
+
+                <c:choose>
+                    <c:when test="${empty classes.uploadPath}">
+                        <a href="${pageContext.request.contextPath}/pages/classesm/uploadClass.jsp?courseName=${classes.courseType.courseName}&name=${classes.name}&uploadTime=${classes.uploadTime}&id=${classes.classId}">上传</a> | 无法下载
+                        <br/>
+                    </c:when>
+                    <c:otherwise>
+                        已上传 |
+                        <a href="${pageContext.request.contextPath}/download.action?fileName=${classes.uploadFilename}">下载</a>
+                    </c:otherwise>
+                </c:choose>
             </td>
         </tr>
     </s:iterator>
     </tbody>
 </table>
+<s:actionerror/>
 
 
 <table border="0" cellspacing="0" cellpadding="0" align="center">

@@ -8,6 +8,8 @@
     <constant name="struts.devMode" value="true"/>
     <!-- 将struts中的对象创建交给spring完成 -->
     <constant name="struts.objectFactory" value="spring"/>
+
+    <constant name="struts.multipart.maxSize" value="10485760"/>
     <package name="ssh" extends="json-default">
         <interceptors>
             <interceptor name="Interceptor" class="com.lanou.dps.util.Interceptor">
@@ -124,11 +126,13 @@
                 class="courseTypeAction"
                 method="findAll">
             <result name="success">/pages/coursetype/listCourse.jsp</result>
+            <result name="input">/pages/coursetype/listCourse.jsp</result>
         </action>
         <action name="addOrEditUI"
                 class="courseTypeAction"
                 method="addOrEditUI">
             <result name="success" type="redirectAction">findAll</result>
+            <result name="input">/pages/coursetype/addOrEditCourse.jsp</result>
         </action>
     </package>
 
@@ -142,6 +146,44 @@
                 class="classesAction"
                 method="findAllClasses">
             <result name="success">/pages/classesm/listClass.jsp</result>
+        </action>
+
+        <!-- 上传 -->
+        <action name="singleUpload"
+                class="classesAction"
+                method="singleUpload">
+
+            <interceptor-ref name="defaultStack">
+                <param name="fileUpload.maximumSize">10485760</param>
+                <param name="fileUpload.allowedExtensions">.png,.jpg,.jpeg</param>
+            </interceptor-ref>
+            <result name="success">/pages/classesm/listClass.jsp</result>
+        </action>
+
+
+        <!-- 下载 -->
+        <action name="download"
+                class="classesAction"
+                method="download">
+            <result name="input">/pages/classesm/listClass.jsp</result>
+            <!-- 文件下载的type 对应stream -->
+            <result name="success" type="stream">
+
+                <!-- 动作类中, 输入流的属性名 -->
+                <param name="inputName">inputStream</param>
+
+                <!-- 指定浏览器以何种形式下载, 以及文件名称-->
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+
+                <!-- 指定下载文件的MIME类型-->
+                <param name="contentType">application/octet-stream</param>
+            </result>
+        </action>
+
+        <action name="findAllCourseType"
+                class="classesAction"
+                method="findAllCourseType">
+            <result name="success">/pages/classesm/addOrEditClass.jsp</result>
         </action>
     </package>
 </struts>

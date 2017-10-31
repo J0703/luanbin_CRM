@@ -7,7 +7,9 @@ import com.lanou.dps.domain.Department;
 import com.lanou.dps.util.PageBean;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dllo on 2017/10/30.
@@ -33,6 +35,13 @@ public class ClassesServiceImpl implements ClassesService{
         List<Classes> data = classesDao.findAll1("",null,pageBean.getStartIndex(), pageBean.getPageSize());
         pageBean.setData(data);
         return pageBean;
+    }
+
+    @Override
+    public Classes findClassesByClassId(String classId) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("id",classId);
+        return classesDao.findSingle("from Classes where classId=:id",map);
     }
 
 

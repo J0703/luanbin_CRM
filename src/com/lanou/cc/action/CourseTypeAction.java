@@ -32,6 +32,18 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<Cours
         if (pageNum == 0) {
             pageNum = 1;
         }
+        if ((courseType.getTotalEnd() != null && courseType.getTotalStart() != null)){
+            if (Double.parseDouble(courseType.getTotalStart()) > Double.parseDouble(courseType.getTotalEnd())) {
+                addActionError("请输入正确的格式");
+                return INPUT;
+            }
+        }
+        if ((courseType.getCourseCostEnd() != null && courseType.getCourseCostStart() != null)){
+            if (Double.parseDouble(courseType.getCourseCostStart()) > Double.parseDouble(courseType.getCourseCostEnd())) {
+                addActionError("请输入正确的格式");
+                return INPUT;
+            }
+        }
         PageBean<CourseType> all = courseTypeService.findAll(courseType, pageNum, pageSize);
         ActionContext.getContext().put("pageBean", all);
         return SUCCESS;
@@ -46,6 +58,14 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<Cours
 
 
     public String addOrEditUI() {
+        if (StringUtils.isBlank(courseType.getCourseName())){
+            addActionError("课程类别不能为空");
+            return INPUT;
+        }
+        if (courseType.getTotal()!=0){
+            addActionError("课时不能为0");
+            return INPUT;
+        }
         if (StringUtils.isBlank(courseType.getCourseTypeId())) {
             courseTypeService.saveCourse(courseType);
         } else {
