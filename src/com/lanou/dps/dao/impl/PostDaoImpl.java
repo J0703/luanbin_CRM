@@ -1,9 +1,9 @@
 package com.lanou.dps.dao.impl;
 
+import com.lanou.base.impl.BaseDaoImpl;
 import com.lanou.dps.dao.PostDao;
-import com.lanou.dps.domain.Department;
 import com.lanou.dps.domain.Post;
-import com.lanou.dps.util.PageHibernateCallback;
+import com.lanou.util.PageHibernateCallback;
 
 import java.util.HashMap;
 import java.util.List;

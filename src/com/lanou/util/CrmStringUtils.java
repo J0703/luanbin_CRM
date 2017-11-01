@@ -1,4 +1,4 @@
-package com.lanou.dps.util;
+package com.lanou.util;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

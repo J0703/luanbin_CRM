@@ -1,7 +1,7 @@
 package com.lanou.cc.service;
 
 import com.lanou.cc.domain.CourseType;
-import com.lanou.dps.util.PageBean;
+import com.lanou.util.PageBean;
 
 import java.util.List;
 

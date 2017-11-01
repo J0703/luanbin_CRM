@@ -2,7 +2,7 @@ package com.lanou.dps.action;
 
 import com.lanou.dps.domain.Department;
 import com.lanou.dps.service.DepartmentService;
-import com.lanou.dps.util.PageBean;
+import com.lanou.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;

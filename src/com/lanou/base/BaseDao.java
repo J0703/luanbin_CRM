@@ -1,4 +1,4 @@
-package com.lanou.dps.dao;
+package com.lanou.base;
 
 import java.io.Serializable;
 import java.util.List;
@@ -42,12 +42,9 @@ public interface BaseDao<T> {
      */
     T findSingle(String hql, Map<String, Object> params);
 
-
     void save(T t);
 
-
     void update(T t);
-
 
     int getTotalRecord(String condition, Object[] params);
 

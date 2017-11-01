@@ -1,4 +1,4 @@
-package com.lanou.dps.util;
+package com.lanou.util;
 
 import com.lanou.dps.domain.Staff;
 import com.opensymphony.xwork2.ActionContext;

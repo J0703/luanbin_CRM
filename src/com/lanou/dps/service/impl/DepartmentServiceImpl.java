@@ -1,10 +1,9 @@
 package com.lanou.dps.service.impl;
 
-import com.lanou.cc.domain.CourseType;
 import com.lanou.dps.dao.DepartmentDao;
 import com.lanou.dps.domain.Department;
 import com.lanou.dps.service.DepartmentService;
-import com.lanou.dps.util.PageBean;
+import com.lanou.util.PageBean;
 
 import java.util.List;
 

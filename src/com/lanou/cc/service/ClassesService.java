@@ -1,7 +1,7 @@
 package com.lanou.cc.service;
 
 import com.lanou.cc.domain.Classes;
-import com.lanou.dps.util.PageBean;
+import com.lanou.util.PageBean;
 
 /**
  * Created by dllo on 2017/10/30.

@@ -1,4 +1,4 @@
-package com.lanou.dps.util;
+package com.lanou.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;

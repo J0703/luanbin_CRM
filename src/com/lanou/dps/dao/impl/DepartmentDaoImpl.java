@@ -1,10 +1,9 @@
 package com.lanou.dps.dao.impl;
 
-import com.lanou.cc.domain.CourseType;
+import com.lanou.base.impl.BaseDaoImpl;
 import com.lanou.dps.dao.DepartmentDao;
 import com.lanou.dps.domain.Department;
-import com.lanou.dps.util.PageHibernateCallback;
-import org.apache.commons.lang3.StringUtils;
+import com.lanou.util.PageHibernateCallback;
 
 import java.util.HashMap;
 import java.util.List;

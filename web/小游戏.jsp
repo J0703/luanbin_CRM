@@ -36,5 +36,6 @@
     <div id="browser"></div>
 </div>
 <script src="scripts/all.js"></script>
+<a href="pages/login.jsp">返回登录界面</a>
 </body>
 </html>

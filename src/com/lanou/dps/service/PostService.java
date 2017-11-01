@@ -1,7 +1,7 @@
 package com.lanou.dps.service;
 
 import com.lanou.dps.domain.Post;
-import com.lanou.dps.util.PageBean;
+import com.lanou.util.PageBean;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package com.lanou.cc.dao.impl;
 
 import com.lanou.cc.dao.CourseTypeDao;
 import com.lanou.cc.domain.CourseType;
-import com.lanou.dps.util.PageHibernateCallback;
+import com.lanou.util.PageHibernateCallback;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 

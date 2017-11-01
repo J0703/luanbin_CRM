@@ -1,6 +1,6 @@
 package com.lanou.dps.dao;
 
-import com.lanou.cc.domain.CourseType;
+import com.lanou.base.BaseDao;
 import com.lanou.dps.domain.Department;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by dllo on 2017/10/25.
  */
-public interface DepartmentDao extends BaseDao<Department>{
+public interface DepartmentDao extends BaseDao<Department> {
      void addDepartment(Department department);
 
      List<Department> findAllDepartment();

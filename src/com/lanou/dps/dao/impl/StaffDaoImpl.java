@@ -1,5 +1,6 @@
 package com.lanou.dps.dao.impl;
 
+import com.lanou.base.impl.BaseDaoImpl;
 import com.lanou.dps.dao.StaffDao;
 import com.lanou.dps.domain.Staff;
 import org.hibernate.Session;

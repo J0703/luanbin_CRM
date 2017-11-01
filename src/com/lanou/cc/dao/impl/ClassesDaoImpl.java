@@ -2,7 +2,7 @@ package com.lanou.cc.dao.impl;
 
 import com.lanou.cc.dao.ClassesDao;
 import com.lanou.cc.domain.Classes;
-import com.lanou.dps.dao.impl.BaseDaoImpl;
+import com.lanou.base.impl.BaseDaoImpl;
 
 
 /**

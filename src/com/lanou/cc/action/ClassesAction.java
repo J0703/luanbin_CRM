@@ -4,7 +4,7 @@ import com.lanou.cc.domain.Classes;
 import com.lanou.cc.domain.CourseType;
 import com.lanou.cc.service.ClassesService;
 import com.lanou.cc.service.CourseTypeService;
-import com.lanou.dps.util.PageBean;
+import com.lanou.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;

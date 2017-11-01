@@ -1,4 +1,4 @@
-package com.lanou.dps.test;
+package com.lanou.test;
 
 import com.lanou.dps.domain.Department;
 import com.lanou.dps.domain.Post;

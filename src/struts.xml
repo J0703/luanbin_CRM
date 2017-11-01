@@ -10,9 +10,9 @@
     <constant name="struts.objectFactory" value="spring"/>
 
     <constant name="struts.multipart.maxSize" value="10485760"/>
-    <package name="ssh" extends="json-default">
+    <package name="common" extends="json-default">
         <interceptors>
-            <interceptor name="Interceptor" class="com.lanou.dps.util.Interceptor">
+            <interceptor name="Interceptor" class="com.lanou.util.Interceptor">
                 <param name="includeMethods">addDepartment,addPost,addStaff,editStaff</param>
             </interceptor>
             <interceptor-stack name="myInterceptorStack">
@@ -24,6 +24,10 @@
         <global-results>
             <result name="miss">/pages/error.jsp</result>
         </global-results>
+    </package>
+
+    <package name="ssh" extends="common">
+
         <action name="login"
                 class="staffAction"
                method="login">
@@ -77,6 +81,7 @@
                 <param name="root">departments</param>
             </result>
         </action>
+
         <action name="findPostByDepId"
                 class="staffAction"
                 method="findPostByDepId">
@@ -116,7 +121,7 @@
         </action>
     </package>
 
-    <package name="course" extends="json-default">
+    <package name="course" extends="common">
         <!--<action name="find"-->
                 <!--class="courseTypeAction"-->
                 <!--method="find">-->
@@ -136,7 +141,7 @@
         </action>
     </package>
 
-    <package name="classes" extends="json-default">
+    <package name="classes" extends="common">
         <action name="addOrUpdateClasses"
                 class="classesAction"
                 method="addOrUpdateClasses">

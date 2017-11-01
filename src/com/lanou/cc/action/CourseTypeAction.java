@@ -2,7 +2,7 @@ package com.lanou.cc.action;
 
 import com.lanou.cc.domain.CourseType;
 import com.lanou.cc.service.CourseTypeService;
-import com.lanou.dps.util.PageBean;
+import com.lanou.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -32,18 +32,6 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<Cours
         if (pageNum == 0) {
             pageNum = 1;
         }
-        if ((courseType.getTotalEnd() != null && courseType.getTotalStart() != null)){
-            if (Double.parseDouble(courseType.getTotalStart()) > Double.parseDouble(courseType.getTotalEnd())) {
-                addActionError("请输入正确的格式");
-                return INPUT;
-            }
-        }
-        if ((courseType.getCourseCostEnd() != null && courseType.getCourseCostStart() != null)){
-            if (Double.parseDouble(courseType.getCourseCostStart()) > Double.parseDouble(courseType.getCourseCostEnd())) {
-                addActionError("请输入正确的格式");
-                return INPUT;
-            }
-        }
         PageBean<CourseType> all = courseTypeService.findAll(courseType, pageNum, pageSize);
         ActionContext.getContext().put("pageBean", all);
         return SUCCESS;
@@ -56,8 +44,8 @@ public class CourseTypeAction extends ActionSupport implements ModelDriven<Cours
 //        return SUCCESS;
 //    }
 
-
     public String addOrEditUI() {
+
         if (StringUtils.isBlank(courseType.getCourseName())){
             addActionError("课程类别不能为空");
             return INPUT;

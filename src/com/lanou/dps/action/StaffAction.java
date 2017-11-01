@@ -6,7 +6,7 @@ import com.lanou.dps.domain.Staff;
 import com.lanou.dps.service.PostService;
 import com.lanou.dps.service.StaffService;
 import com.lanou.dps.service.DepartmentService;
-import com.lanou.dps.util.CrmStringUtils;
+import com.lanou.util.CrmStringUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
